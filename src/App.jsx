@@ -78,7 +78,7 @@ function App() {
             displayTime: prev.displayTime - 1,
           };
         });
-      }, 100);
+      }, 1000);
       localStorage.clear();
       localStorage.setItem("interval-id", interval);
     }
