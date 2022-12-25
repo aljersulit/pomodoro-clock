@@ -10,15 +10,7 @@ function App() {
   const [breakTime, setBreakTime] = useState(5 * 60);
   const [sessionTime, setSessionTime] = useState(25 * 60);
   const [timerOn, setTimerOn] = useState(false);
-  const app = document.getElementById("root");
 
-  if (timer.onBreak) {
-    app.style.background =
-      "linear-gradient(to bottom, #669999 0%, #ff99cc 100%)";
-  } else {
-    app.style.background =
-      "linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)";
-  }
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
@@ -62,8 +54,10 @@ function App() {
       let interval = setInterval(() => {
         setTimer((prev) => {
           const alarmSound = document.getElementById("beep");
+          const app = document.getElementById("root");
           if (prev.displayTime <= 0 && !prev.onBreak) {
             alarmSound.play();
+            app.style.animation = "animate 3s ease-in-out 1 forwards";
             return {
               ...prev,
               displayTime: breakTime,
@@ -72,6 +66,7 @@ function App() {
           }
           if (prev.displayTime <= 0 && prev.onBreak) {
             alarmSound.play();
+            app.style.animation = "animate2 3s ease-in-out 1 forwards";
             return {
               ...prev,
               displayTime: sessionTime,
@@ -83,7 +78,7 @@ function App() {
             displayTime: prev.displayTime - 1,
           };
         });
-      }, 1000);
+      }, 100);
       localStorage.clear();
       localStorage.setItem("interval-id", interval);
     }

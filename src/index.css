@@ -11,12 +11,32 @@ html {
 }
 
 div#root {
-  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
-  background-repeat: no-repeat;
+  width: 100%;
   height: 100vh;
+  background: linear-gradient(-25deg, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
+  background-size: 400% 400%;
+  background-position: 5% 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes animate{
+  0%{
+    background-position: 5% 50%;
+  }
+  100%{
+    background-position: 60% 50%;
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    background-position: 60% 50%;
+  }
+  100% {
+    background-position: 5% 50%;
+  }
 }
 
 div.App {
